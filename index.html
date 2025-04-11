@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Portfolio Template</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #2b2d42;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 100vw;
+            margin: 0.5% ;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 5%;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #ff6b6b;
+            border-radius: 8px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #2b2d42;
+            border-radius: 5px;
+            transform: rotate(45deg);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            margin-left: 10%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        .contact-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 5%;
+        }
+
+        .contact-btn:hover {
+            background-color: white;
+            color: #2b2d42;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin-left: 10%;
+        }
+
+        .hero-tag {
+            color: #ff6b6b;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 60px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .primary-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            background-color: #ff5252;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            color: #ff6b6b;
+        }
+
+        /* Visual Elements */
+        .visual-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10%;
+        }
+
+        .laptop-container {
+            background-color: #9575cd;
+            width: 300px;
+            height: 300px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .laptop {
+            width: 200px;
+            height: 120px;
+            background-color: #333;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            transform: perspective(500px) rotateX(10deg);
+        }
+
+        .laptop:after {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 12px;
+            background-color: #222;
+            bottom: -12px;
+            left: -10px;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .laptop:before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 100px;
+            background-color: #6b6ef0;
+            top: 10px;
+            left: 10px;
+            border-radius: 2px;
+        }
+
+        .decoration {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .star-icon {
+            background-color: #ff6b6b;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -20px;
+            right: 120px;
+        }
+
+        .star-icon:before {
+            content: '✦';
+            font-size: 30px;
+            color: white;
+        }
+
+        .person-image {
+            width: 200px;
+            height: 250px;
+            background-color: #ffc107;
+            border-radius: 150px 150px 0 0;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .person-image img {
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .document-icon {
+            width: 150px;
+            height: 100px;
+            background-color: white;
+            border-radius: 8px;
+            position: absolute;
+            right: 330px;
+            bottom: 80px;
+            display: flex;
+            padding: 15px;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .document-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff6b6b;
+        }
+
+        .document-line {
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+        }
+
+        /* Decorative elements */
+        .squiggle {
+            position: absolute;
+            border: 3px dashed rgba(255, 255, 255, 0.3);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .squiggle-1 {
+            top: 50px;
+            right: 80px;
+        }
+
+        .squiggle-2 {
+            bottom: 60px;
+            right: 400px;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .testimonial-content {
+            max-width: 350px;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+        }
+
+        .testimonial-company {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Client Logos */
+        .client-logos {
+            padding: 80px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .client-logo {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            color: #e0e0e0;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+        }
+
+        /* Curved arrow */
+        .curved-arrow {
+            position: absolute;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(-60deg);
+            bottom: 20px;
+            right: 280px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .visual-container {
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+
+            .client-logos {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul {
+                display: none;
+            }
+
+            .contact-btn {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .visual-container {
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                Agency
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </nav>
+            <button class="contact-btn">CONTACT</button>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">MODERN STUDIO</div>
+                <h1 class="hero-title">We're Help<br>To Build Your<br>Dream Project</h1>
+                <p class="hero-description">Agency provides a full service range including technical skills, design, business understanding.</p>
+                <div class="cta-buttons">
+                    <button class="primary-btn">HOW WE WORK</button>
+                    <button class="secondary-btn">Contact Us</button>
+                </div>
+            </div>
+
+            <div class="visual-container">
+                <div class="laptop-container">
+                    <div class="laptop"></div>
+                </div>
+
+                <div class="star-icon decoration"></div>
+
+                <div class="person-image decoration">
+                    <img src="/api/placeholder/200/250" alt="Happy professional" />
+                </div>
+
+                <div class="document-icon decoration">
+                    <div class="document-dot"></div>
+                    <div class="document-line"></div>
+                    <div class="document-line"></div>
+                </div>
+
+                <div class="squiggle squiggle-1"></div>
+                <div class="squiggle squiggle-2"></div>
+                <div class="curved-arrow"></div>
+            </div>
+        </section>
+
+        <section class="testimonial">
+            <div class="testimonial-avatar">
+                <img src="/api/placeholder/50/50" alt="Avatar" />
+            </div>
+            <div class="testimonial-content">
+                <p class="testimonial-quote">"Put themselves in the merchant's shoes"</p>
+                <p class="testimonial-author">Meta Inc.</p>
+            </div>
+        </section>
+
+        <section class="client-logos">
+            <div class="client-logo">Digitalside</div>
+            <div class="client-logo">VORTEX</div>
+            <div class="client-logo">TRAVEL EXPLORER</div>
+            <div class="client-logo">MediaFury</div>
+        </section>
+    </div>
+</body>
+</html>
